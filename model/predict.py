@@ -1,9 +1,10 @@
 import joblib
 from preprocess import extract_features
 
-model = joblib.load("cough_model.pkl")
+model = joblib.load('cough_model.pkl')
 
-features = extract_features("sample_cough.wav")
-prediction = model.predict([features])
-
-print("predicted class:", prediction[0])
+def predict_cough(audio_path):
+    features = extract_features(audio_path)
+    prediction = model.predict([features])[0]
+    diseases = {0: "Healthy", 1: "Ill"}
+    return diseases.get(prediction, "Unknown")
