@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A non-diagnostic sandbox for neutral synthetic acoustic classes.">
+  <title>Acoustic ML Sandbox</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="/" aria-label="Acoustic Sandbox home">
+      <span class="brand-mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span>Acoustic Sandbox</span>
+    </a>
+    <span class="safety-pill">Non-diagnostic</span>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="eyebrow">Synthetic acoustic ML · Local demo</div>
+      <h1 id="hero-title">See the shape of a sound.</h1>
+      <p class="lede">Compare a PCM WAV with three procedural waveform families. Get transparent features and neutral similarities—not a health, identity, or real-world sound assessment.</p>
+      <div class="notice" role="note">
+        <strong>Demonstration only.</strong>
+        <span>This tool cannot diagnose, screen, treat, triage, or evaluate anyone’s health.</span>
+      </div>
+    </section>
+
+    <section class="workspace" aria-labelledby="workspace-title">
+      <div class="panel upload-panel">
+        <div class="panel-heading">
+          <div>
+            <span class="step">01 · Input</span>
+            <h2 id="workspace-title">Choose a waveform</h2>
+          </div>
+          <span id="limit-label" class="muted">PCM WAV · up to 2 MiB</span>
+        </div>
+
+        <label id="drop-zone" class="drop-zone" for="audio-file">
+          <input id="audio-file" type="file" accept="audio/wav,.wav">
+          <span class="upload-icon" aria-hidden="true">↗</span>
+          <strong>Drop a WAV here</strong>
+          <span>or browse from your device</span>
+        </label>
+
+        <div id="file-card" class="file-card hidden">
+          <div class="file-symbol" aria-hidden="true">WAV</div>
+          <div class="file-copy">
+            <strong id="file-name"></strong>
+            <span id="file-size"></span>
+          </div>
+          <button id="clear-file" class="icon-button" type="button" aria-label="Remove selected file">×</button>
+        </div>
+        <audio id="audio-preview" class="audio-preview hidden" controls></audio>
+        <button id="analyze" class="primary-button" type="button" disabled>
+          <span id="button-label">Compare sound shape</span>
+          <span class="arrow" aria-hidden="true">→</span>
+        </button>
+        <p id="status" class="status" role="status" aria-live="polite"></p>
+      </div>
+
+      <div class="panel result-panel">
+        <div class="panel-heading">
+          <div>
+            <span class="step">02 · Output</span>
+            <h2>Nearest synthetic family</h2>
+          </div>
+          <span id="model-id" class="model-tag">Awaiting input</span>
+        </div>
+
+        <div id="empty-result" class="empty-result">
+          <div class="wave-placeholder" aria-hidden="true">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <p>Your inspectable result will appear here.</p>
+        </div>
+
+        <div id="results" class="results hidden">
+          <div class="winner">
+            <span>Closest match</span>
+            <strong id="winner-name"></strong>
+            <small id="audio-meta"></small>
+          </div>
+          <div id="scores" class="scores" aria-label="Relative synthetic class scores"></div>
+          <details>
+            <summary>Inspect acoustic features</summary>
+            <dl id="features" class="feature-grid"></dl>
+          </details>
+          <p class="result-note">Scores are normalized similarities inside this toy model, not calibrated probabilities or real-world confidence.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="families" aria-labelledby="families-title">
+      <div>
+        <span class="step">The reference set</span>
+        <h2 id="families-title">Three generated families. Zero recordings.</h2>
+      </div>
+      <div class="family-grid">
+        <article><span class="family-number">A</span><h3>Steady tone</h3><p>A continuous procedural sine wave.</p></article>
+        <article><span class="family-number">B</span><h3>Pulsed tone</h3><p>A generated tone with a regular on/off envelope.</p></article>
+        <article><span class="family-number">C</span><h3>Broadband texture</h3><p>Deterministic seeded pseudorandom noise.</p></article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Built for transparent software demonstrations.</span>
+    <span>No uploaded file is intentionally retained by the application.</span>
+  </footer>
+</body>
+</html>

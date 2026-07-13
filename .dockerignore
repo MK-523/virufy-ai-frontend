@@ -1,0 +1,14 @@
+.git
+.github
+.venv
+__pycache__
+*.pyc
+*.egg-info
+build
+dist
+generated-fixtures
+legacy
+tests
+examples
+docs
+.env

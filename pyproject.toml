@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "non-diagnostic-acoustic-sandbox"
+version = "0.1.0"
+description = "A safe, synthetic-only acoustic ML sandbox"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{name = "Mahesh Karthikeyan"}]
+keywords = ["audio", "acoustics", "machine-learning", "synthetic-data"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Topic :: Multimedia :: Sound/Audio :: Analysis",
+]
+dependencies = []
+
+[project.optional-dependencies]
+server = ["gunicorn>=22,<24"]
+dev = ["build>=1.2", "ruff>=0.11"]
+
+[project.scripts]
+acoustic-sandbox = "acoustic_sandbox.cli:main"
+
+[project.urls]
+Repository = "https://github.com/MK-523/virufy-ai-frontend"
+
+[tool.setuptools.packages.find]
+include = ["acoustic_sandbox*"]
+
+[tool.setuptools.package-data]
+acoustic_sandbox = ["py.typed", "static/*.html", "static/*.css", "static/*.js"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 120
+extend-exclude = ["backend", "frontend", "legacy", "model"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
